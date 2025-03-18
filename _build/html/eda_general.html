@@ -1,0 +1,1215 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Carga de librerías y configuración inicial &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eda_general';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Importación de librerías y cargas de datos" href="eda_csf.html" />
+    <link rel="prev" title="Carga de librerías" href="eda_reg.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda_reg.html">Carga de librerías</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><em>Carga de librerías y configuración inicial</em></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eda_csf.html"><em>Importación de librerías y cargas de datos</em></a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Feda_general.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/eda_general.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Carga de librerías y configuración inicial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><em>Carga de librerías y configuración inicial</em></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cargar-datos-y-eliminacion-de-columnas-innecesarias"><em>Cargar datos y eliminación de columnas innecesarias</em></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-datos-general-del-dataset"><em>Análisis exploratorio de datos general del dataset</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-valores-faltantes"><em>Tratamiento de valores faltantes</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-porcentaje-de-valores-faltantes-en-variables">Visualización de porcentaje de valores faltantes en variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-valores-faltantes">Cantidad de valores faltantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-de-valores-faltantes">Imputación de valores faltantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-la-imputacion-de-los-datos">Análisis de la imputación de los datos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-categorizacion-de-variables"><em>Limpieza y categorización de variables</em></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="carga-de-librerias-y-configuracion-inicial">
+<h1><em>Carga de librerías y configuración inicial</em><a class="headerlink" href="#carga-de-librerias-y-configuracion-inicial" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">missingno</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">msno</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">ks_2samp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoDataFrame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopandas.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">sjoin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">ks_2samp</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoDataFrame</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">geopandas.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">sjoin</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;geopandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;accidentes.csv&quot;</span><span class="p">)</span>
+<span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;datos_procesados.parquet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cargar-datos-y-eliminacion-de-columnas-innecesarias">
+<h1><em>Cargar datos y eliminación de columnas innecesarias</em><a class="headerlink" href="#cargar-datos-y-eliminacion-de-columnas-innecesarias" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;accidentes.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Start_Time&quot;</span><span class="p">,</span> <span class="s2">&quot;End_Time&quot;</span><span class="p">,</span> <span class="s2">&quot;Weather_Timestamp&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols_to_drop</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Wind_Chill(F)&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">,</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span> <span class="s2">&quot;Street&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;City&quot;</span><span class="p">,</span> <span class="s2">&quot;Zipcode&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Airport_Code&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">,</span><span class="s2">&quot;End_Lng&quot;</span><span class="p">,</span><span class="s2">&quot;End_Lat&quot;</span><span class="p">,</span><span class="s1">&#39;Precipitation(in)&#39;</span><span class="p">,</span> <span class="s2">&quot;Temperature(F)&quot;</span><span class="p">,</span> <span class="s2">&quot;Wind_Speed(mph)&quot;</span><span class="p">,</span> <span class="s2">&quot;Visibility(mi)&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature(C)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature(F)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Wind_Speed(km/h)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Wind_Speed(mph)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.60934</span> 
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Visibility(km)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Visibility(mi)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.60934</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;End_Lat&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s2">&quot;End_Lng&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols_to_drop</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analisis-exploratorio-de-datos-general-del-dataset">
+<h1><em>Análisis exploratorio de datos general del dataset</em><a class="headerlink" href="#analisis-exploratorio-de-datos-general-del-dataset" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> *Resumen Estadístico de Variables Numéricas:*&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> *Resumen Estadístico de Variables Numéricas:*
+           Severity     Start_Lat     Start_Lng  Distance(mi)  \
+count  7.728394e+06  7.728394e+06  7.728394e+06  7.728394e+06   
+mean   2.212384e+00  3.620119e+01 -9.470255e+01  5.618423e-01   
+min    1.000000e+00  2.455480e+01 -1.246238e+02  0.000000e+00   
+25%    2.000000e+00  3.339963e+01 -1.172194e+02  0.000000e+00   
+50%    2.000000e+00  3.582397e+01 -8.776662e+01  3.000000e-02   
+75%    2.000000e+00  4.008496e+01 -8.035368e+01  4.640000e-01   
+max    4.000000e+00  4.900220e+01 -6.711317e+01  4.417500e+02   
+std    4.875313e-01  5.076079e+00  1.739176e+01  1.776811e+00   
+
+                   Weather_Timestamp   Humidity(%)  Pressure(in)  \
+count                        7608166  7.554250e+06  7.587715e+06   
+mean   2020-06-02 10:06:41.888674560  6.483104e+01  2.953899e+01   
+min              2016-01-14 19:51:00  1.000000e+00  0.000000e+00   
+25%              2018-11-20 18:35:00  4.800000e+01  2.937000e+01   
+50%              2020-11-10 13:53:00  6.700000e+01  2.986000e+01   
+75%              2022-01-19 14:27:00  8.400000e+01  3.003000e+01   
+max              2023-03-31 23:53:00  1.000000e+02  5.863000e+01   
+std                              NaN  2.282097e+01  1.006190e+00   
+
+       Temperature(C)  Wind_Speed(km/h)  Visibility(km)  
+count    7.564541e+06      7.157161e+06    7.551296e+06  
+mean     1.647960e+01      1.236857e+01    1.462951e+01  
+min     -6.722222e+01      0.000000e+00    0.000000e+00  
+25%      9.444444e+00      7.402964e+00    1.609340e+01  
+50%      1.777778e+01      1.126538e+01    1.609340e+01  
+75%      2.444444e+01      1.673714e+01    1.609340e+01  
+max      9.722222e+01      1.749353e+03    2.253076e+02  
+std      1.056314e+01      8.730643e+00    4.326414e+00  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> *Resumen de Variables Categóricas:*&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> *Resumen de Variables Categóricas:*
+                 Start_Time             End_Time       County    State  \
+count               7728394              7728394      7728394  7728394   
+unique              6131796              6705355         1871       49   
+top     2021-01-26 16:16:13  2021-11-22 08:00:00  Los Angeles       CA   
+freq                    225                  112       526851  1741433   
+
+          Timezone Wind_Direction Weather_Condition Sunrise_Sunset  \
+count      7720586        7553188           7554935        7705148   
+unique           4             24               144              2   
+top     US/Eastern           CALM              Fair            Day   
+freq       3580167         961624           2560802        5334553   
+
+       Civil_Twilight Nautical_Twilight Astronomical_Twilight  
+count         7705148           7705148               7705148  
+unique              2                 2                     2  
+top               Day               Day                   Day  
+freq          5695619           6076156               6377548  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tratamiento-de-valores-faltantes">
+<h2><em>Tratamiento de valores faltantes</em><a class="headerlink" href="#tratamiento-de-valores-faltantes" title="Link to this heading">#</a></h2>
+<section id="visualizacion-de-porcentaje-de-valores-faltantes-en-variables">
+<h3>Visualización de porcentaje de valores faltantes en variables<a class="headerlink" href="#visualizacion-de-porcentaje-de-valores-faltantes-en-variables" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">missing_values</span><span class="p">[</span><span class="n">missing_values</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">missing_values</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">missing_values</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Porcentaje de Valores Faltantes por Variable&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Porcentaje&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/53abe8e4905d89ecab0d67b92fcae2361306a910a8b8df4bdb4872d4f741a1a1.png" src="_images/53abe8e4905d89ecab0d67b92fcae2361306a910a8b8df4bdb4872d4f741a1a1.png" />
+</div>
+</div>
+</section>
+<section id="cantidad-de-valores-faltantes">
+<h3>Cantidad de valores faltantes<a class="headerlink" href="#cantidad-de-valores-faltantes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cantidad de Valores Faltantes&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d7bc665de7fc8ec0d2f0be950ba67dcc4943928de255b51263a6998abee198e4.png" src="_images/d7bc665de7fc8ec0d2f0be950ba67dcc4943928de255b51263a6998abee198e4.png" />
+</div>
+</div>
+</section>
+<section id="imputacion-de-valores-faltantes">
+<h3>Imputación de valores faltantes<a class="headerlink" href="#imputacion-de-valores-faltantes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Timezone&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Weather_Timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Temperature(C)&#39;</span><span class="p">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Humidity(%)&#39;</span><span class="p">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Pressure(in)&#39;</span><span class="p">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Visibility(km)&#39;</span><span class="p">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Wind_Direction&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Wind_Speed(km/h)&#39;</span><span class="p">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Weather_Condition&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sunrise_Sunset&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Civil_Twilight&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Nautical_Twilight&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Astronomical_Twilight&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear una copia del DataFrame original</span>
+<span class="n">df_original</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminar filas con valores faltantes en &#39;Weather_Condition&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Weather_Condition&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputación de variables numéricas con la mediana del estado</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">col_type</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">col_type</span> <span class="o">==</span> <span class="s1">&#39;numeric&#39;</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;State&quot;</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">median</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputación de variables categóricas con muestreo basado en frecuencias</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">col_type</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">col_type</span> <span class="o">==</span> <span class="s1">&#39;categorical&#39;</span><span class="p">:</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">probs</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analisis-de-la-imputacion-de-los-datos">
+<h3>Análisis de la imputación de los datos<a class="headerlink" href="#analisis-de-la-imputacion-de-los-datos" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de Kolmogorov-Smirnov para evaluar la distribución tras la imputación</span>
+<span class="n">ks_results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">col_type</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">col_type</span> <span class="o">==</span> <span class="s1">&#39;numeric&#39;</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  
+        <span class="n">original_values</span> <span class="o">=</span> <span class="n">df_original</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">imputed_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+
+        <span class="n">stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">original_values</span><span class="p">,</span> <span class="n">imputed_values</span><span class="p">)</span>
+
+        <span class="n">ks_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;KS_Statistic&#39;</span><span class="p">:</span> <span class="n">stat</span><span class="p">,</span>
+            <span class="s1">&#39;P_Value&#39;</span><span class="p">:</span> <span class="n">p_value</span><span class="p">,</span>
+            <span class="s1">&#39;Same_Distribution&#39;</span><span class="p">:</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="n">alpha</span>  
+        <span class="p">}</span>
+<span class="n">freq_results</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">col_type</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">col_type</span> <span class="o">==</span> <span class="s1">&#39;categorical&#39;</span> <span class="ow">and</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">original_freq</span> <span class="o">=</span> <span class="n">df_original</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">imputed_freq</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">freq_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Original_Frequencies&#39;</span><span class="p">:</span> <span class="n">original_freq</span><span class="p">,</span>
+            <span class="s1">&#39;Imputed_Frequencies&#39;</span><span class="p">:</span> <span class="n">imputed_freq</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">ks_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variable: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  KS Statistic: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;KS_Statistic&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  P-Value: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;P_Value&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ¿Mantiene la distribución? </span><span class="si">{</span><span class="s1">&#39;Sí&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Same_Distribution&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable: Temperature(C)
+  KS Statistic: 0.0012
+  P-Value: 0.0000
+  ¿Mantiene la distribución? No
+
+Variable: Humidity(%)
+  KS Statistic: 0.0020
+  P-Value: 0.0000
+  ¿Mantiene la distribución? No
+
+Variable: Pressure(in)
+  KS Statistic: 0.0010
+  P-Value: 0.0011
+  ¿Mantiene la distribución? No
+
+Variable: Visibility(km)
+  KS Statistic: 0.0004
+  P-Value: 0.5630
+  ¿Mantiene la distribución? Sí
+
+Variable: Wind_Speed(km/h)
+  KS Statistic: 0.0207
+  P-Value: 0.0000
+  ¿Mantiene la distribución? No
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">freq_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variable: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Frecuencias Originales:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Original_Frequencies&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Frecuencias Imputadas:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Imputed_Frequencies&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable: Timezone
+  Frecuencias Originales:
+Timezone
+US/Eastern     0.463717
+US/Pacific     0.267206
+US/Central     0.213147
+US/Mountain    0.055931
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Timezone
+US/Eastern     0.462903
+US/Pacific     0.267552
+US/Central     0.214789
+US/Mountain    0.054756
+Name: proportion, dtype: float64
+
+Variable: Wind_Direction
+  Frecuencias Originales:
+Wind_Direction
+CALM        0.127314
+S           0.055604
+SSW         0.050951
+W           0.050828
+WNW         0.050148
+NW          0.048900
+Calm        0.048795
+SW          0.048254
+WSW         0.046842
+SSE         0.046220
+NNW         0.044144
+N           0.040665
+SE          0.039043
+E           0.036927
+ESE         0.035523
+NE          0.034242
+ENE         0.034221
+NNE         0.033802
+VAR         0.033174
+South       0.023483
+West        0.021812
+North       0.020307
+Variable    0.015092
+East        0.013709
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Wind_Direction
+CALM        0.127536
+S           0.055765
+SSW         0.051030
+W           0.050978
+WNW         0.050230
+NW          0.048990
+Calm        0.048744
+SW          0.048350
+WSW         0.046948
+SSE         0.046327
+NNW         0.044238
+N           0.040769
+SE          0.039133
+E           0.037043
+ESE         0.035630
+ENE         0.034318
+NE          0.034308
+NNE         0.033881
+VAR         0.033229
+South       0.023492
+West        0.021803
+North       0.018462
+Variable    0.015065
+East        0.013731
+Name: proportion, dtype: float64
+
+Variable: Weather_Condition
+  Frecuencias Originales:
+Weather_Condition
+Fair                         3.389575e-01
+Mostly Cloudy                1.345074e-01
+Cloudy                       1.081521e-01
+Clear                        1.070483e-01
+Partly Cloudy                9.251860e-02
+                                 ...     
+Heavy Sleet / Windy          1.323638e-07
+Sand / Windy                 1.323638e-07
+Heavy Rain Shower / Windy    1.323638e-07
+Blowing Snow Nearby          1.323638e-07
+Drifting Snow                1.323638e-07
+Name: proportion, Length: 144, dtype: float64
+  Frecuencias Imputadas:
+Weather_Condition
+Fair                         3.389575e-01
+Mostly Cloudy                1.345074e-01
+Cloudy                       1.081521e-01
+Clear                        1.070483e-01
+Partly Cloudy                9.251860e-02
+                                 ...     
+Heavy Sleet / Windy          1.323638e-07
+Sand / Windy                 1.323638e-07
+Heavy Rain Shower / Windy    1.323638e-07
+Blowing Snow Nearby          1.323638e-07
+Drifting Snow                1.323638e-07
+Name: proportion, Length: 144, dtype: float64
+
+Variable: Sunrise_Sunset
+  Frecuencias Originales:
+Sunrise_Sunset
+Day      0.692336
+Night    0.307664
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Sunrise_Sunset
+Day      0.69324
+Night    0.30676
+Name: proportion, dtype: float64
+
+Variable: Civil_Twilight
+  Frecuencias Originales:
+Civil_Twilight
+Day      0.739197
+Night    0.260803
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Civil_Twilight
+Day      0.740131
+Night    0.259869
+Name: proportion, dtype: float64
+
+Variable: Nautical_Twilight
+  Frecuencias Originales:
+Nautical_Twilight
+Day      0.788584
+Night    0.211416
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Nautical_Twilight
+Day      0.789507
+Night    0.210493
+Name: proportion, dtype: float64
+
+Variable: Astronomical_Twilight
+  Frecuencias Originales:
+Astronomical_Twilight
+Day      0.8277
+Night    0.1723
+Name: proportion, dtype: float64
+  Frecuencias Imputadas:
+Astronomical_Twilight
+Day      0.82857
+Night    0.17143
+Name: proportion, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="limpieza-y-categorizacion-de-variables">
+<h1><em>Limpieza y categorización de variables</em><a class="headerlink" href="#limpieza-y-categorizacion-de-variables" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">categorize_weather</span><span class="p">(</span><span class="n">condition</span><span class="p">):</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Lluvia ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Rain Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Rain Shower&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Rain / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lluvia moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Rain Shower&quot;</span><span class="p">,</span> <span class="s2">&quot;Rain Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Rain Shower / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lluvia intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Rain Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Rain Shower&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Rain Shower / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Rain / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Drizzle&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Drizzle / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Drizzle&quot;</span><span class="p">,</span> <span class="s2">&quot;Drizzle / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Drizzle&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Nieve ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow Shower&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Nieve moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Nieve intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Snow Showers&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Snow / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Aguanieve ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Sleet&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow and Sleet&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow and Sleet / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Aguanieve moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sleet&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow and Sleet&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow and Sleet / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Aguanieve intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Sleet&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Sleet / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Granizo ligero&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Hail&quot;</span><span class="p">,</span> <span class="s2">&quot;Small Hail&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Granizo moderado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hail&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Cielo despejado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Clear&quot;</span><span class="p">,</span> <span class="s2">&quot;Fair&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Nublado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Cloudy&quot;</span><span class="p">,</span> <span class="s2">&quot;Mostly Cloudy&quot;</span><span class="p">,</span> <span class="s2">&quot;Scattered Clouds&quot;</span><span class="p">,</span> <span class="s2">&quot;Overcast&quot;</span><span class="p">,</span> <span class="s2">&quot;Partly Cloudy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Tormenta eléctrica&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Thunderstorm&quot;</span><span class="p">,</span> <span class="s2">&quot;Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;T-Storm&quot;</span><span class="p">,</span> <span class="s2">&quot;Thunder in the Vicinity&quot;</span><span class="p">,</span> <span class="s2">&quot;Thunder / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Thunder / Wintry Mix&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Thunderstorm&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Tormentas fuertes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy T-Storm&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Thunderstorms and Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Thunderstorms and Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy T-Storm / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Tormenta con granizo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Thunder and Hail&quot;</span><span class="p">,</span> <span class="s2">&quot;Thunder and Hail / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Thunderstorms with Small Hail&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lluvia helada ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Freezing Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Freezing Rain / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lluvia helada moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Freezing Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Freezing Rain / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lluvia helada intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Freezing Rain&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Freezing Rain / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna helada ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Light Freezing Drizzle&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna helada moderada&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Freezing Drizzle&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Llovizna helada intensa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Heavy Freezing Drizzle&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Niebla ligera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mist&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Partial Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Shallow Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Haze&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Niebla densa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Fog / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Patches of Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Patches of Fog / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Shallow Fog / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Freezing Fog&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Humo y neblina&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Haze&quot;</span><span class="p">,</span> <span class="s2">&quot;Smoke&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Smoke&quot;</span><span class="p">,</span> <span class="s2">&quot;Haze / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Smoke / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Viento fuerte&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Blowing Dust / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Cloudy / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Fair / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Mostly Cloudy / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Partly Cloudy / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Blowing Sand&quot;</span><span class="p">,</span> <span class="s2">&quot;Widespread Dust&quot;</span><span class="p">,</span> <span class="s2">&quot;Blowing Dust&quot;</span><span class="p">,</span> <span class="s2">&quot;Blowing Snow Nearby&quot;</span><span class="p">,</span> <span class="s2">&quot;Blowing Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand / Dust Whirlwinds&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand / Dust Whirls Nearby&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand / Dust Whirlwinds / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Duststorm&quot;</span><span class="p">,</span> <span class="s2">&quot;Drifting Snow / Windy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Mezcla invernal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Wintry Mix&quot;</span><span class="p">,</span> <span class="s2">&quot;Wintry Mix / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow and Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow and Thunder / Windy&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow with Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;Rain and Sleet&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Tornado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tornado&quot;</span><span class="p">,</span> <span class="s2">&quot;Funnel Cloud&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Otros&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Volcanic Ash&quot;</span><span class="p">,</span> <span class="s2">&quot;Showers in the Vicinity&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Rain with Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;Low Drifting Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Ice Pellets&quot;</span><span class="p">,</span> <span class="s2">&quot;Squalls&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A Precipitation&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">,</span> <span class="s2">&quot;Snow Grains&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Ice Pellets&quot;</span><span class="p">,</span> <span class="s2">&quot;Drizzle and Fog&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Snow Grains&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Blowing Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Blowing Snow&quot;</span><span class="p">,</span> <span class="s2">&quot;Dust Whirls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sleet and Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Sleet and Thunder&quot;</span><span class="p">,</span> <span class="s2">&quot;Heavy Sleet / Windy&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">categories</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">condition</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">category</span>
+    <span class="k">return</span> <span class="s2">&quot;Desconocido&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">assign_weather_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column_name</span><span class="o">=</span><span class="s2">&quot;Weather_Condition&quot;</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorize_weather</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">clean_temperature</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">62.2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">62.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.9</span><span class="p">)</span>  
+    <span class="k">elif</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">56.7</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">56.5</span><span class="p">,</span> <span class="mf">56.7</span><span class="p">)</span>  
+    <span class="k">return</span> <span class="n">temp</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">clean_pressure</span><span class="p">(</span><span class="n">pres</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pres</span> <span class="o">&lt;</span> <span class="mi">25</span> <span class="ow">or</span> <span class="n">pres</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>  
+    <span class="k">elif</span> <span class="n">pres</span> <span class="o">&lt;</span> <span class="mf">25.69</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">25.69</span><span class="p">,</span> <span class="mf">25.9</span><span class="p">)</span>  
+    <span class="k">elif</span> <span class="n">pres</span> <span class="o">&gt;</span> <span class="mf">31.42</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">31.2</span><span class="p">,</span> <span class="mf">31.42</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">clean_visibility</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Corrección de valores atípicos en temperatura, presión y visibilidad</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature(C)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature(C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_temperature</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Pressure(in)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Pressure(in)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_pressure</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Visibility(km)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Visibility(km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">16.09</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">assign_weather_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Weather_Condition&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminación de filas con valores nulos en &#39;Pressure(in)&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Pressure(in)&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Start_Lng&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Start_Lat&quot;</span><span class="p">])</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar archivo GeoJSON con los estados de EE.UU.</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json&quot;</span><span class="p">)</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">states</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;within&#39;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index_right&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;Start_Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;Start_Time&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Guardar el dataset procesado</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">OUTPUT_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    
+    <span class="n">gdf</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dataset procesado guardado en: </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">¡El archivo procesado ya existe! Elimínalo para regenerarlo.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¡El archivo procesado ya existe! Elimínalo para regenerarlo.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="eda_reg.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Carga de librerías</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eda_csf.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em>Importación de librerías y cargas de datos</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><em>Carga de librerías y configuración inicial</em></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cargar-datos-y-eliminacion-de-columnas-innecesarias"><em>Cargar datos y eliminación de columnas innecesarias</em></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-datos-general-del-dataset"><em>Análisis exploratorio de datos general del dataset</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-valores-faltantes"><em>Tratamiento de valores faltantes</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-porcentaje-de-valores-faltantes-en-variables">Visualización de porcentaje de valores faltantes en variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantidad-de-valores-faltantes">Cantidad de valores faltantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-de-valores-faltantes">Imputación de valores faltantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-la-imputacion-de-los-datos">Análisis de la imputación de los datos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-categorizacion-de-variables"><em>Limpieza y categorización de variables</em></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
