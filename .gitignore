@@ -1,1 +1,3 @@
-accidentes.csv
+# Ignorar archivos grandes
+*.parquet
+*.csv
