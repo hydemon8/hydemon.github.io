@@ -1,0 +1,19 @@
+title: "Exploración de Datos"
+author: "Tu Nombre"
+logo: "logo.png"  # Opcional, si tienes un logo
+
+execute:
+  execute_notebooks: "off"  # Evita ejecutar los notebooks en la construcción
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+html:
+  use_repository_button: false  # Ocultar botón de repositorio
+  use_issues_button: false       # Ocultar botón de issues
+
+repository:
+  url: https://github.com/hydemon8/hydemon.github.io  # Reemplaza con tu URL real
+  path_to_book: docs
+  branch: main  # Usa la rama correcta donde está tu libro
